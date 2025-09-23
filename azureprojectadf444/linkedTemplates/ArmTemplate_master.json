@@ -1,0 +1,70 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "azureprojectadf444"
+		},
+		"AzureProject_ADLS_Storage_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureProject_ADLS_Storage'"
+		},
+		"AzureProject_ADLS_Storage_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsstorage44.dfs.core.windows.net/"
+		},
+		"AzureProject_kv_ls_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://azureprojectkeyvs.vault.azure.net/"
+		},
+		"storage_trigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/d45f1abe-9475-4dd3-9b81-3745b49f3833/resourceGroups/azureproject444/providers/Microsoft.Storage/storageAccounts/adlsstorage44"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "azureprojectadf444_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureProject_ADLS_Storage_accountKey": {
+						"value": "[parameters('AzureProject_ADLS_Storage_accountKey')]"
+					},
+					"AzureProject_ADLS_Storage_properties_typeProperties_url": {
+						"value": "[parameters('AzureProject_ADLS_Storage_properties_typeProperties_url')]"
+					},
+					"AzureProject_kv_ls_properties_typeProperties_baseUrl": {
+						"value": "[parameters('AzureProject_kv_ls_properties_typeProperties_baseUrl')]"
+					},
+					"storage_trigger_properties_typeProperties_scope": {
+						"value": "[parameters('storage_trigger_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
