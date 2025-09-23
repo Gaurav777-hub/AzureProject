@@ -1,0 +1,25 @@
+{
+	"name": "storage_trigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pipeline1",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/sales/blobs/landing",
+			"blobPathEndsWith": "orders.csv",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/d45f1abe-9475-4dd3-9b81-3745b49f3833/resourceGroups/azureproject444/providers/Microsoft.Storage/storageAccounts/adlsstorage44",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
