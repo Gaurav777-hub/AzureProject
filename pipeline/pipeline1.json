@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Notebook1",
+				"name": "LoadOrdersWithDatabricksNotebook",
 				"type": "DatabricksNotebook",
 				"dependsOn": [],
 				"policy": {
@@ -13,7 +13,14 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/azuredataengineer44@gmail.com/AzureProject-Sales"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureProject_Databricks_ls",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"annotations": []
