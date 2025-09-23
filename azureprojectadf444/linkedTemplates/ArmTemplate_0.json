@@ -75,7 +75,7 @@
 						},
 						"secretName": "databricks-access-token"
 					},
-					"newClusterNodeType": "Standard_F4",
+					"newClusterNodeType": "Standard_D3_v2",
 					"newClusterNumOfWorker": "1",
 					"newClusterSparkEnvVars": {
 						"PYSPARK_PYTHON": "/databricks/python3/bin/python3"
@@ -131,7 +131,7 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
-				"runtimeState": "Stopped",
+				"runtimeState": "Started",
 				"pipelines": [
 					{
 						"pipelineReference": {
