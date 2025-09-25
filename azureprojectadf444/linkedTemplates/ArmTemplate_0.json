@@ -19,11 +19,11 @@
 			"type": "string",
 			"defaultValue": "https://azureprojectkeyvs.vault.azure.net/"
 		},
-		"storage_trigger_properties_pipeline1_parameters_filename": {
+		"storage_trigger_sales_properties_pipeline1_parameters_filename": {
 			"type": "string",
 			"defaultValue": "@triggerBody().filename"
 		},
-		"storage_trigger_properties_typeProperties_scope": {
+		"storage_trigger_sales_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/d45f1abe-9475-4dd3-9b81-3745b49f3833/resourceGroups/azureproject444/providers/Microsoft.Storage/storageAccounts/adlsstorage44"
 		}
@@ -141,7 +141,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/storage_trigger')]",
+			"name": "[concat(parameters('factoryName'), '/storage_trigger_sales')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -154,7 +154,7 @@
 							"type": "PipelineReference"
 						},
 						"parameters": {
-							"filename": "[parameters('storage_trigger_properties_pipeline1_parameters_filename')]"
+							"filename": "[parameters('storage_trigger_sales_properties_pipeline1_parameters_filename')]"
 						}
 					}
 				],
@@ -163,7 +163,7 @@
 					"blobPathBeginsWith": "/sales/blobs/landing/",
 					"blobPathEndsWith": ".csv",
 					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('storage_trigger_properties_typeProperties_scope')]",
+					"scope": "[parameters('storage_trigger_sales_properties_typeProperties_scope')]",
 					"events": [
 						"Microsoft.Storage.BlobCreated"
 					]

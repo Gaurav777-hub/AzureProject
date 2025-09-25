@@ -19,11 +19,11 @@
 			"type": "string",
 			"defaultValue": "https://azureprojectkeyvs.vault.azure.net/"
 		},
-		"storage_trigger_properties_pipeline1_parameters_filename": {
+		"storage_trigger_sales_properties_pipeline1_parameters_filename": {
 			"type": "string",
 			"defaultValue": "@triggerBody().filename"
 		},
-		"storage_trigger_properties_typeProperties_scope": {
+		"storage_trigger_sales_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/d45f1abe-9475-4dd3-9b81-3745b49f3833/resourceGroups/azureproject444/providers/Microsoft.Storage/storageAccounts/adlsstorage44"
 		},
@@ -63,11 +63,11 @@
 					"AzureProject_kv_ls_properties_typeProperties_baseUrl": {
 						"value": "[parameters('AzureProject_kv_ls_properties_typeProperties_baseUrl')]"
 					},
-					"storage_trigger_properties_pipeline1_parameters_filename": {
-						"value": "[parameters('storage_trigger_properties_pipeline1_parameters_filename')]"
+					"storage_trigger_sales_properties_pipeline1_parameters_filename": {
+						"value": "[parameters('storage_trigger_sales_properties_pipeline1_parameters_filename')]"
 					},
-					"storage_trigger_properties_typeProperties_scope": {
-						"value": "[parameters('storage_trigger_properties_typeProperties_scope')]"
+					"storage_trigger_sales_properties_typeProperties_scope": {
+						"value": "[parameters('storage_trigger_sales_properties_typeProperties_scope')]"
 					}
 				}
 			},
