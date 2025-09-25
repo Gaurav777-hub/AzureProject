@@ -15,7 +15,13 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/Users/azuredataengineer44@gmail.com/AzureProject-Sales"
+					"notebookPath": "/Users/azuredataengineer44@gmail.com/AzureProject-Sales",
+					"baseParameters": {
+						"filename": {
+							"value": "@pipeline().parameters.filename",
+							"type": "Expression"
+						}
+					}
 				},
 				"linkedServiceName": {
 					"referenceName": "AzureProject_Databricks_ls",
