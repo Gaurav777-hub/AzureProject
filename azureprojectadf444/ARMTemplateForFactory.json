@@ -19,6 +19,10 @@
 			"type": "string",
 			"defaultValue": "https://azureprojectkeyvs.vault.azure.net/"
 		},
+		"storage_trigger_properties_pipeline1_parameters_filename": {
+			"type": "string",
+			"defaultValue": "@triggerBody().filename"
+		},
 		"storage_trigger_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/d45f1abe-9475-4dd3-9b81-3745b49f3833/resourceGroups/azureproject444/providers/Microsoft.Storage/storageAccounts/adlsstorage44"
@@ -47,7 +51,13 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"notebookPath": "/Users/azuredataengineer44@gmail.com/AzureProject-Sales"
+							"notebookPath": "/Users/azuredataengineer44@gmail.com/AzureProject-Sales",
+							"baseParameters": {
+								"filename": {
+									"value": "@pipeline().parameters.filename",
+									"type": "Expression"
+								}
+							}
 						},
 						"linkedServiceName": {
 							"referenceName": "AzureProject_Databricks_ls",
@@ -57,6 +67,11 @@
 				],
 				"policy": {
 					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"filename": {
+						"type": "string"
+					}
 				},
 				"annotations": []
 			},
@@ -98,7 +113,7 @@
 						},
 						"secretName": "databricks-access-token"
 					},
-					"newClusterNodeType": "Standard_D3_v2",
+					"newClusterNodeType": "Standard_DS3_v2",
 					"newClusterNumOfWorker": "1",
 					"newClusterSparkEnvVars": {
 						"PYSPARK_PYTHON": "/databricks/python3/bin/python3"
@@ -131,20 +146,22 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
-				"runtimeState": "Started",
+				"runtimeState": "Stopped",
 				"pipelines": [
 					{
 						"pipelineReference": {
 							"referenceName": "pipeline1",
 							"type": "PipelineReference"
 						},
-						"parameters": {}
+						"parameters": {
+							"filename": "[parameters('storage_trigger_properties_pipeline1_parameters_filename')]"
+						}
 					}
 				],
 				"type": "BlobEventsTrigger",
 				"typeProperties": {
 					"blobPathBeginsWith": "/sales/blobs/landing",
-					"blobPathEndsWith": "orders.csv",
+					"blobPathEndsWith": ".csv",
 					"ignoreEmptyBlobs": true,
 					"scope": "[parameters('storage_trigger_properties_typeProperties_scope')]",
 					"events": [
