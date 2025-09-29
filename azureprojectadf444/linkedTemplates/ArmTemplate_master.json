@@ -23,14 +23,6 @@
 			"type": "string",
 			"defaultValue": "https://azureprojectkeyvs.vault.azure.net/"
 		},
-		"storage_trigger_sales_properties_pipeline1_parameters_filename": {
-			"type": "string",
-			"defaultValue": "@triggerBody().filename"
-		},
-		"storage_trigger_sales_properties_typeProperties_scope": {
-			"type": "string",
-			"defaultValue": "/subscriptions/d45f1abe-9475-4dd3-9b81-3745b49f3833/resourceGroups/azureproject444/providers/Microsoft.Storage/storageAccounts/adlsstorage44"
-		},
 		"AzureSqlDatabase_ls_properties_typeProperties_server": {
 			"type": "string",
 			"defaultValue": "azureprojectsqlserver.database.windows.net"
@@ -42,6 +34,14 @@
 		"AzureSqlDatabase_ls_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "azure-sql-user"
+		},
+		"storage_trigger_sales_properties_pipeline1_parameters_filename": {
+			"type": "string",
+			"defaultValue": "@triggerBody().filename"
+		},
+		"storage_trigger_sales_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/d45f1abe-9475-4dd3-9b81-3745b49f3833/resourceGroups/azureproject444/providers/Microsoft.Storage/storageAccounts/adlsstorage44"
 		},
 		"containerUri": {
 			"type": "string",
