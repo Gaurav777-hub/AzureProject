@@ -45,6 +45,8 @@
 					{
 						"name": "LoadOrdersWithDatabricksNotebook",
 						"type": "DatabricksNotebook",
+						"state": "Inactive",
+						"onInactiveMarkAs": "Succeeded",
 						"dependsOn": [],
 						"policy": {
 							"timeout": "0.12:00:00",
@@ -67,6 +69,112 @@
 							"referenceName": "AzureProject_Databricks_ls",
 							"type": "LinkedServiceReference"
 						}
+					},
+					{
+						"name": "Copy data1",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "JsonSource",
+								"storeSettings": {
+									"type": "AzureBlobFSReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "JsonReadSettings"
+								}
+							},
+							"sink": {
+								"type": "DelimitedTextSink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings",
+									"copyBehavior": "FlattenHierarchy"
+								},
+								"formatSettings": {
+									"type": "DelimitedTextWriteSettings",
+									"quoteAllText": true,
+									"fileExtension": ".csv"
+								}
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"path": "$['order_item_id']"
+										},
+										"sink": {
+											"name": "order_item_id"
+										}
+									},
+									{
+										"source": {
+											"path": "$['order_item_order_id']"
+										},
+										"sink": {
+											"name": "order_item_order_id"
+										}
+									},
+									{
+										"source": {
+											"path": "$['order_item_product_id']"
+										},
+										"sink": {
+											"name": "order_item_product_id"
+										}
+									},
+									{
+										"source": {
+											"path": "$['order_item_quantity']"
+										},
+										"sink": {
+											"name": "order_item_quantity"
+										}
+									},
+									{
+										"source": {
+											"path": "$['order_item_subtotal']"
+										},
+										"sink": {
+											"name": "order_item_subtotal"
+										}
+									},
+									{
+										"source": {
+											"path": "$['order_item_product_price']"
+										},
+										"sink": {
+											"name": "order_item_product_price"
+										}
+									}
+								]
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "Json1",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "DelimitedText1",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
 					}
 				],
 				"policy": {
@@ -80,7 +188,84 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureProject_Databricks_ls')]"
+				"[concat(variables('factoryId'), '/linkedServices/AzureProject_Databricks_ls')]",
+				"[concat(variables('factoryId'), '/datasets/Json1')]",
+				"[concat(variables('factoryId'), '/datasets/DelimitedText1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DelimitedText1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureProject_ADLS_Storage",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "order_items",
+						"fileSystem": "sales"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureProject_ADLS_Storage')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Json1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureProject_ADLS_Storage",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "order_items.json",
+						"folderPath": "order_items",
+						"fileSystem": "sales"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"order_item_id": {
+							"type": "integer"
+						},
+						"order_item_order_id": {
+							"type": "integer"
+						},
+						"order_item_product_id": {
+							"type": "integer"
+						},
+						"order_item_quantity": {
+							"type": "integer"
+						},
+						"order_item_subtotal": {
+							"type": "number"
+						},
+						"order_item_product_price": {
+							"type": "number"
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureProject_ADLS_Storage')]"
 			]
 		},
 		{
