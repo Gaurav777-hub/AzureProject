@@ -1,5 +1,5 @@
 {
-	"name": "DelimitedText1",
+	"name": "order_items_ds",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureProject_ADLS_Storage",

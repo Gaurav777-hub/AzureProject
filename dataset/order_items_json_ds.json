@@ -1,5 +1,5 @@
 {
-	"name": "Json1",
+	"name": "order_items_json_ds",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureProject_ADLS_Storage",
