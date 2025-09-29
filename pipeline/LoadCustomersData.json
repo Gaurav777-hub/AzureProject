@@ -72,6 +72,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "username",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "customer_email",
 									"type": "String",
@@ -79,6 +84,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "password",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "customer_password",
 									"type": "String",
@@ -86,6 +96,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "address",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "customer_street",
 									"type": "String",
@@ -93,6 +108,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "city",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "customer_city",
 									"type": "String",
@@ -100,6 +120,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "state",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "customer_state",
 									"type": "String",
@@ -107,6 +132,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "pincode",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "customer_zipcode",
 									"type": "String",
