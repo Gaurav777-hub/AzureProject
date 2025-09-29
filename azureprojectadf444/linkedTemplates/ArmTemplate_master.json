@@ -31,6 +31,18 @@
 			"type": "string",
 			"defaultValue": "/subscriptions/d45f1abe-9475-4dd3-9b81-3745b49f3833/resourceGroups/azureproject444/providers/Microsoft.Storage/storageAccounts/adlsstorage44"
 		},
+		"AzureSqlDatabase_ls_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "azureprojectsqlserver.database.windows.net"
+		},
+		"AzureSqlDatabase_ls_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "AzureProjectSQLDB"
+		},
+		"AzureSqlDatabase_ls_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "azure-sql-user"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -69,6 +81,15 @@
 					},
 					"AzureProject_Databricks_ls_properties_typeProperties_existingClusterId": {
 						"value": "[parameters('AzureProject_Databricks_ls_properties_typeProperties_existingClusterId')]"
+					},
+					"AzureSqlDatabase_ls_properties_typeProperties_server": {
+						"value": "[parameters('AzureSqlDatabase_ls_properties_typeProperties_server')]"
+					},
+					"AzureSqlDatabase_ls_properties_typeProperties_database": {
+						"value": "[parameters('AzureSqlDatabase_ls_properties_typeProperties_database')]"
+					},
+					"AzureSqlDatabase_ls_properties_typeProperties_userName": {
+						"value": "[parameters('AzureSqlDatabase_ls_properties_typeProperties_userName')]"
 					},
 					"storage_trigger_sales_properties_pipeline1_parameters_filename": {
 						"value": "[parameters('storage_trigger_sales_properties_pipeline1_parameters_filename')]"
