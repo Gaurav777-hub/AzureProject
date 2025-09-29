@@ -1,0 +1,23 @@
+{
+	"name": "AzureSqlDatabase_ls",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "azureprojectsqlserver.database.windows.net",
+			"database": "AzureProjectSQLDB",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "azure-sql-user",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureProject_kv_ls",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "azure-sql-user"
+			}
+		}
+	}
+}
