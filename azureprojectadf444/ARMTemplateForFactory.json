@@ -15,6 +15,10 @@
 			"type": "string",
 			"defaultValue": "https://adlsstorage44.dfs.core.windows.net/"
 		},
+		"AzureProject_Databricks_ls_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "0925-174611-rd1z6gme"
+		},
 		"AzureProject_kv_ls_properties_typeProperties_baseUrl": {
 			"type": "string",
 			"defaultValue": "https://azureprojectkeyvs.vault.azure.net/"
@@ -113,14 +117,7 @@
 						},
 						"secretName": "databricks-access-token"
 					},
-					"newClusterNodeType": "Standard_DS3_v2",
-					"newClusterNumOfWorker": "1",
-					"newClusterSparkEnvVars": {
-						"PYSPARK_PYTHON": "/databricks/python3/bin/python3"
-					},
-					"newClusterVersion": "10.4.x-scala2.12",
-					"clusterOption": "Fixed",
-					"newClusterInitScripts": []
+					"existingClusterId": "[parameters('AzureProject_Databricks_ls_properties_typeProperties_existingClusterId')]"
 				}
 			},
 			"dependsOn": [

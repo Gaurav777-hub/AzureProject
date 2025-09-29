@@ -11,6 +11,9 @@
 		"AzureProject_ADLS_Storage_properties_typeProperties_url": {
 			"value": "https://adlsstorage44.dfs.core.windows.net/"
 		},
+		"AzureProject_Databricks_ls_properties_typeProperties_existingClusterId": {
+			"value": "0925-174611-rd1z6gme"
+		},
 		"AzureProject_kv_ls_properties_typeProperties_baseUrl": {
 			"value": "https://azureprojectkeyvs.vault.azure.net/"
 		},
